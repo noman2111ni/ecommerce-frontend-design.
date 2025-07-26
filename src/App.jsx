@@ -1,9 +1,16 @@
+import Footer from "./components/Footer"
 import Header from "./components/Header"
 
 const App = () => {
   return (
     <>
-      <Header />
+
+      <div  style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <Header />
+        {/* ...other components... */}
+        <Footer />
+      </div>
+
     </>
   )
 }
