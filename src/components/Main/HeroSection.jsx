@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FaRegUserCircle, FaChevronDown, FaChevronUp } from "react-icons/fa";
-
 const HeroSection = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -14,14 +13,13 @@ const HeroSection = () => {
         "Beauty & Pets",
         "Books & Stationary",
         "More Categories",
-        "More Categories",
-        "More Categories",
+       
     ];
 
     return (
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto  py-4">
             <div className="flex flex-col lg:flex-row justify-between gap-4 bg-white rounded-lg overflow-hidden">
-                
+
                 {/* Left Sidebar */}
                 <div className="p-2 text-sm bg-white rounded-lg w-full lg:w-[250px]">
                     {/* Mobile Toggle Header */}
@@ -68,9 +66,9 @@ const HeroSection = () => {
                 </div>
 
                 {/* Right User Box */}
-                <div className="w-full lg:w-[250px] p-4 bg-white flex flex-col">
+                <div className="w-full lg:w-[250px] p-2  bg-white flex flex-col">
                     <div className="bg-blue-100 p-4 rounded-lg flex flex-col items-center justify-center">
-                        <div className="flex items-center gap-3 mb-4">
+                        <div className="flex items-center gap-2 py-1">
                             <FaRegUserCircle className="text-3xl sm:text-4xl text-gray-700" />
                             <div className="text-sm text-gray-700">
                                 Hi, User <br />
@@ -84,14 +82,14 @@ const HeroSection = () => {
                             Log In
                         </button>
                     </div>
-                    <div className="p-2 bg-orange-600 hover:bg-amber-600 rounded-lg mt-4">
+                    <div className="p-2 bg-orange-600 hover:bg-amber-600 rounded-lg mt-2">
                         <p className="text-[16px] text-white font-semibold whitespace-normal">
                             Get US $100 off<br /> on your first <br /> purchase
                         </p>
                     </div>
-                    <div className="p-2 bg-orange-600 hover:bg-amber-600 rounded-lg mt-4">
-                        <p className="text-[16px] text-white font-semibold whitespace-normal">
-                            Get US $100 off<br /> on your first <br /> purchase
+                    <div className="p-2 bg-gray-400 hover:bg-gray-600 rounded-lg mt-2">
+                        <p className="text-[17  px] text-white font-semibold whitespace-normal">
+                            Send quote with<br /> supplier <br /> preferance
                         </p>
                     </div>
                 </div>

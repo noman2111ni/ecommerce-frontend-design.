@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CgProfile } from "react-icons/cg";
 import { BsBagDash } from "react-icons/bs";
 import { LuMessageSquareText } from "react-icons/lu";
-import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa6";
 import { FaCartArrowDown } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import HeroSection from './HeroSection';
+import { FaHome } from "react-icons/fa";
 
+import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from '@clerk/clerk-react';
+import { Link } from "react-router-dom";
+import { useSelector } from 'react-redux';
 const Header = () => {
+  const user = useUser();
   const [togle, settogle] = useState(false);
 
+  const items = useSelector((state) => state.cart);
   const handleToggle = () => {
     settogle(!togle);
   };
@@ -22,6 +27,7 @@ const Header = () => {
 
           {/* Logo Section */}
           <div className="flex items-center space-x-2">
+
             <div
               style={{
                 color: "#3B82F6",
@@ -59,21 +65,48 @@ const Header = () => {
 
           {/* Icon Menu */}
           <ul className="flex justify-center flex-wrap items-center gap-4 sm:gap-6 text-gray-700 text-xs">
-            <li className="flex flex-col items-center hover:text-blue-500 transition">
-              <CgProfile className="text-2xl mb-1" />
-              <span>Profile</span>
-            </li>
-            <li className="flex flex-col items-center hover:text-blue-500 transition">
+            <Link to='/'>
+              <li className="flex flex-col items-center hover:text-blue-500 transition">
+                <FaHome className="text-2xl mb-1" />
+                <span>Home</span>
+              </li>
+            </Link>
+
+            {/* <li className="flex flex-col items-center hover:text-blue-500 transition">
               <LuMessageSquareText className="text-2xl mb-1" />
               <span>Messages</span>
-            </li>
+            </li> */}
+            <Link to='/AllOder'>
+              <li className="flex flex-col items-center hover:text-blue-500 transition">
+                <FaHeart className="text-2xl mb-1" />
+                <span>Order</span>
+              </li>
+            </Link>
+            <Link to='/OrderCart'>
+              <li className="flex flex-col items-center hover:text-blue-500 transition relative">
+                <FaCartArrowDown className="text-2xl mb-1" />
+
+                <span className='absolute top-[-7px] right-[-1px] bg-red-500 text-white rounded-full w-4 h-4 text-xs flex items-center justify-center'> {items.length} </span>
+                <span>My Carts</span>
+              </li>
+            </Link>
             <li className="flex flex-col items-center hover:text-blue-500 transition">
-              <CiHeart className="text-2xl mb-1" />
-              <span>Order</span>
-            </li>
-            <li className="flex flex-col items-center hover:text-blue-500 transition">
-              <FaCartArrowDown className="text-2xl mb-1" />
-              <span>Cart</span>
+              <SignedOut>
+                <SignInButton>
+                  <CgProfile className="text-2xl mb-1" />
+                </SignInButton>
+                <span>Sign in</span>
+              </SignedOut>
+
+              <SignedIn>
+                <div className="flex flex-col items-center mt-3   ">
+                  <UserButton />
+                  <h2 className="text-sm font-medium">
+                    Hi, {user?.firstName || user?.username || "User"} 👋
+                  </h2>
+                  <br />
+                </div>
+              </SignedIn>
             </li>
           </ul>
         </nav>
@@ -126,7 +159,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <HeroSection/>
+
     </>
   );
 };

@@ -1,4 +1,3 @@
-import React from 'react'
 import { BsBagDash } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { CiTwitter } from "react-icons/ci";
